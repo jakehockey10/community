@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 
 import { ChatBotService } from 'app/chat-bot.service';
 import { UserService } from 'app/user.service';
@@ -15,7 +16,14 @@ import { UserService } from 'app/user.service';
 export class AppComponent {
   loggedIn = false;
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private location: Location
+  ) { }
+
+  back() {
+    this.location.back();
+  }
 
   logout() {
     this.userService.logout();
